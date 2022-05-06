@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row page-titles mx-0 mb-4">
+        <div class="col-sm-12 p-md-0">
+            <ul class="nav nav-pills light">
+                <li class="nav-item">
+                    <a class="nav-link active" data-bs-toggle="tab" href="#vouchersList">Vouchers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#redeem">Redeem</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- row -->
+    <div class="row">
+        <div class="tab-content col-12">
+            <div class="tab-pane fade active show" id="vouchersList">
+                <div class="card">
+                <div class="card-header d-sm-flex d-block">
+                    <div class="mr-auto mb-sm-0 mb-3">
+                        <h4 class="card-title mb-2">Voucher Pool</h4>
+                    </div>
+                    <a href="javascript:void(0);" class="btn btn-info btn-sm"><i class="fa fa-plus m-0"></i>  Generate Vouchers</a>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="example" class="display" style="min-width: 845px">
+                            <thead>
+                                <tr>
+                                    <th>CODE</th>
+                                    <th>IS USED</th>
+                                    <th>EMAIL</th>
+                                    <th>USED AT</th>
+                                    <th>EXPIRY</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for voucher in vouchers %}
+                                <tr>
+                                    <td>{{ voucher.code }}</td>
+                                    <td>
+
+                                            {% if voucher.is_used %}
+                                                <span class="badge light badge-success">
+                                                    <i class="fa fa-check text-success me-1"></i>Used
+                                                </span>
+                                            {% else %}
+                                                <span class="badge light badge-warning">
+                                                    <i class="fa fa-times text-warning me-1"></i>Not Used
+                                                </span>
+                                            {% endif %}
+
+
+                                    </td>
+                                    <td>{{ voucher.customer.email }}</td>
+                                    <td>{{ voucher.used_date|date:'Y-m-d' }}</td>
+                                    <td>{{ voucher.expire_date|date:'Y-m-d' }}</td>
+                                </tr>
+                                {% endfor %}
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="tab-pane fade" id="redeem">
+                <div class="card">
+                <div class="card-header d-sm-flex d-block">
+                    <div class="mr-auto mb-sm-0 mb-3">
+                        <h4 class="card-title mb-2">Redeem Voucher</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block vendors %}
+    <!-- Datatable -->
+    <script src="{% static './vendor/datatables/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static './js/plugins-init/datatables.init.js' %}"></script>
+    <script src="{% static './js/custom.js' %}"></script>
+    <script src="{% static './js/deznav-init.js' %}"></script>
+{% endblock vendors %}
