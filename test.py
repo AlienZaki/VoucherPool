@@ -1,7 +1,4 @@
-import uuid
-print(uuid.uuid4().hex[:8].upper())
+from datetime import datetime
 
-from django.utils.crypto import get_random_string
-code = get_random_string(length=8)
-print(code.upper())
-
+s = datetime.strptime("17 May, 2022", '%d %B, %Y').strftime('%Y-%m-%d')
+print(s)
