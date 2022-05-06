@@ -12,7 +12,11 @@ urlpatterns = [
     # Includes URLs
     path('', include('voucher.urls')),
     path('', include('customer.urls')),
-    path('api-auth/', include('rest_framework.urls'))
+    path('api-auth/', include('rest_framework.urls')),
+
+    # Redirects
+    path('', RedirectView.as_view(pattern_name='home', permanent=False)),
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

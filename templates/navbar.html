@@ -1,0 +1,15 @@
+{% load static %}
+<div class="row page-titles mx-0 mb-4">
+    <div class="col-sm-12 p-md-0">
+        <ul class="nav nav-pills light">
+            {% if request.user.is_superuser %}
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.url_name == 'vouchers_list' %} active {% endif %}" href="{% url 'vouchers_list' %}">Vouchers</a>
+                </li>
+            {% endif %}
+            <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'vouchers_endpoints' %} active {% endif %}"  href="{% url 'vouchers_endpoints' %}">Endpoints</a>
+            </li>
+        </ul>
+    </div>
+</div>
