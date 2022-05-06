@@ -1,0 +1,1 @@
+web: gunicorn VoucherPool.wsgi --log-file -
