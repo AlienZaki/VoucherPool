@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <!-- Pick date -->
+    <link rel="stylesheet" href="{% static './vendor/pickadate/themes/default.css' %}">
+    <link rel="stylesheet" href="{% static './vendor/pickadate/themes/default.date.css' %}">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+{% endblock head %}
+
+{% block content %}
+
+    <div class="card">
+        <div class="card-header d-sm-flex d-block">
+            <div class="mr-auto mb-sm-0 mb-3">
+                <h4 class="card-title mb-2">Voucher Endpoints</h4>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row mb-5">
+                <div class="mb-1">
+                    <h4 class="card-title card-intro-title">Get Customer Vouchers</h4>
+                    <p>Retrieve customer's vouchers by <span class="text-danger">email</span></p>
+                </div>
+                <p class="text-info"><span class="text-success">GET</span> /api/vouchers/?email=<code>CUSTOMER_EMAIL</code></p>
+            </div>
+            <div class="row mb-5">
+                <div class="mb-1">
+                    <h4 class="card-title card-intro-title">Validate & Redeem Voucher</h4>
+                    <p>Validate and redeem voucher by <span class="text-danger">code</span> and <span class="text-danger">email</span></p>
+                </div>
+
+                <p class="text-info"><span class="text-success">GET</span> /api/voucher/redeem/?email=<code>CUSTOMER_EMAIL</code>&code=<code>VOUCHER_CODE</code></p>
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}
+
+{% block vendors %}
+
+
+{% endblock vendors %}
